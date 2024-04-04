@@ -8,8 +8,9 @@ import openai
 
 user_input = st.text_input("Enter something:")
 st.write(f"You entered: {user_input}")
-openai.api_key = st.secrets["Open_ai_api_key"]
-api_key = st.secrets["api_key"]
+
+openai.api_key = st.secrets["openai.api_key"]
+api_key_1 = st.secrets["api_key"]
 
 
 
@@ -31,7 +32,7 @@ def get_user_data(intents):
       headers = {
       'Content-Type': 'application/json',
       'Access-Control-Request-Headers': '*',
-      'api-key': api_key,  # Replace 'your_api_key' with your actual API key
+      'api-key': api_key_1,  # Replace 'your_api_key' with your actual API key
       }
     
     # Intent-to-collection mapping
@@ -101,7 +102,7 @@ def handle_chat():
   headers = {
       'Content-Type': 'application/json',
       'Access-Control-Request-Headers': '*',
-      'api-key':api_key,}
+      'api-key':api_key_1,}
 
   #post request to fetch required data
   response_1 = requests.request("POST", url, headers=headers, data=payload)
