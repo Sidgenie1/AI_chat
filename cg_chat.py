@@ -5,8 +5,8 @@ import json
 from openai import OpenAI
 import openai
 # Set your OpenAI and MongoDB API keys
-openai.api_key = st.secrets[Open_ai_api_key]
-api_key = st.secrets[api_key]
+openai.api_key = st.secrets["Open_ai_api_key"]
+api_key = st.secrets["api_key"]
 
 client = OpenAI(api_key = openai.api_key)
 # Function to send a chat completion request to the OpenAI API
