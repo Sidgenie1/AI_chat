@@ -2,8 +2,9 @@
 import streamlit as st
 import requests
 import json
-from openai import OpenAI
 import openai
+from openai import OpenAI
+
 # Set your OpenAI and MongoDB API keys
 
 
