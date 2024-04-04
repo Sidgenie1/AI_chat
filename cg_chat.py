@@ -12,7 +12,7 @@ print('yes')
 user_input = st.text_input("Enter something:")
 st.write(f"You entered: {user_input}")
 
-openai.api_key = st.secrets["openai_api_key"]
+openai.api_key = st.secrets["openai.api_key"]
 api_key_1 = st.secrets["api_key"]
 
 
