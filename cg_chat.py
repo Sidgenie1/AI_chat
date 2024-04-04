@@ -13,13 +13,13 @@ print('yes')
 #user_input = st.text_input("Enter something:")
 #st.write(f"You entered: {user_input}")
 
-openai.api_key = st.secrets["openai.api_key"]
+openai_api_key = st.secrets["openai_api_key"]
 api_key_1 = st.secrets["api_key"]
 
 
 
 
-client = OpenAI(api_key = openai.api_key)
+client = OpenAI(api_key = openai_api_key)
 # Function to send a chat completion request to the OpenAI API
 def chat_completion_request(messages, tools=None, tool_choice=None, model="gpt-3.5-turbo"):
   response = client.chat.completions.create(
