@@ -6,6 +6,9 @@ from openai import OpenAI
 import openai
 # Set your OpenAI and MongoDB API keys
 
+
+print('yes')
+
 user_input = st.text_input("Enter something:")
 st.write(f"You entered: {user_input}")
 
