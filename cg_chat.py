@@ -1,5 +1,5 @@
 #importing libraries
-
+chat = st.chat_input()
 from openai import OpenAI
 
 # Set your OpenAI and MongoDB API keys
@@ -134,7 +134,7 @@ def handle_chat():
       "Salary Negotiation"
   ]
   
-  chat = st.chat_input()
+  
 
 
  
