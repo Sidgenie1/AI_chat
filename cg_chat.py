@@ -129,18 +129,27 @@ def handle_chat():
 
 
 
-  chat = st.chat_input()
 
-
-  default_questions = [
+ default_questions = [
       "Email Recruiter",
       "Interview Preparation",
       "Networking",
       "Upskilling",
       "Salary Negotiation"
   ]
+  
+  chat = st.chat_input()
 
 
+ 
+
+
+  
+  
+  
+  
+  
+  
   for question in default_questions:
     if st.button(question):
         chat = question  # Set 'chat' to the question from the button
