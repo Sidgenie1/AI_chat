@@ -1,8 +1,5 @@
 #importing libraries
-import streamlit as st
-import requests
-import json
-import openai
+
 from openai import OpenAI
 
 # Set your OpenAI and MongoDB API keys
