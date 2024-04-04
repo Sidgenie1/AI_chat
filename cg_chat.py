@@ -1,6 +1,6 @@
 #importing libraries
 
-from openai import OpenAI
+
 
 chat = st.chat_input()
 
