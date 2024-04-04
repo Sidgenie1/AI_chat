@@ -1,6 +1,8 @@
 #importing libraries
-chat = st.chat_input()
+
 from openai import OpenAI
+
+chat = st.chat_input()
 
 # Set your OpenAI and MongoDB API keys
 
