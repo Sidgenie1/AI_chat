@@ -76,8 +76,7 @@ def handle_chat():
   # list to hold intents of the user conversation
   intents = []
   #list to hold whole conversation including context,user input,prompt and assistants response
-  if "messages" not in st.session_state:
-    st.session_state.messages = []
+  messages = []
   
   if "streamlit_chat" not in st.session_state:
     st.session_state.streamlit_chat = []
@@ -167,10 +166,10 @@ def handle_chat():
   if chat:
     user_input = chat
     context = f"""Your name is CareerGenie. You are a fun and engaging career advisor that answers in less than 100 words. If the conversation drifts into non-career topics, bring it back to career related topics. Name of the user is {name}. Current user pathway is {current_pathway}. """
-    st.session_state.messages.append({"role": "system", "content": context})
-    if len(st.session_state.messages) > 10:
-      st.session_state.messages = st.session_state.messages[-10:]
-      st.session_state.messages.insert(0, {"role": "system", "content": context})
+    messages.append({"role": "system", "content": context})
+    if len(messages) > 10:
+      messages = messages[-10:]
+      messages.insert(0, {"role": "system", "content": context})
     
     #User Input
     
@@ -180,7 +179,7 @@ def handle_chat():
     
 
     #appending user input to messages
-    st.session_state.messages.append({"role": "user", "content": user_input})
+    messages.append({"role": "user", "content": user_input})
 # appending user input to the chat history
     chat_history.append({"role": "user", "content":user_input})
 
@@ -251,7 +250,7 @@ def handle_chat():
     tool_choice = {"type": "function", "function": {"name": "orchestrator"}}
 
 #getting the response of user input using 'chat_completion_request' function
-    chat_response = chat_completion_request(st.session_state.messages, tools=tools_1, tool_choice=tool_choice)  #getting the response of user input using 'chat_completion_request' function
+    chat_response = chat_completion_request(messages, tools=tools_1, tool_choice=tool_choice)  #getting the response of user input using 'chat_completion_request' function
 
 #getting the intent of the user query from the response
     message = json.loads(chat_response.choices[0].message.tool_calls[0].function.arguments)["intent_list"]
@@ -268,7 +267,7 @@ def handle_chat():
           output = user_data.get(intent, {})
           tool_choice = {"type": "function", "function": {"name": "learning_orchestrator"}}
 #getting the response from chat_completion_request function
-          chat_response_2 = chat_completion_request(st.session_state.messages, tools=tools_2, tool_choice=tool_choice)
+          chat_response_2 = chat_completion_request(messages, tools=tools_2, tool_choice=tool_choice)
               # getting argument value
           arguments = json.loads(chat_response_2.choices[0].message.tool_calls[0].function.arguments)
 # if skill is not present
@@ -362,12 +361,12 @@ def handle_chat():
           Redirect_Message = ''
 
       #appending prompt to messages
-  st.session_state.messages.append({"role": "system", "content": prompt})
+  messages.append({"role": "system", "content": prompt})
   #passing the messages to the next 'chat_completion_request' function to get the last response
-  assistants_response = chat_completion_request(st.session_state.messages)
+  assistants_response = chat_completion_request(messages)
   assistants_response = assistants_response.choices[0].message.content
   #appending the assistants response to messages to hold full conversation
-  st.session_state.messages.append({"role": "assistant", "content": assistants_response})
+  messages.append({"role": "assistant", "content": assistants_response})
 
   
 
